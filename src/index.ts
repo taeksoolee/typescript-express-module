@@ -12,8 +12,17 @@ import bodyChecker from './middleware/bodyChecker';
 
 
 async function bootstrap(port) {
+    
+    await AppDataSource
+        .initialize()
+        .then((d) => {
+            d.setOptions({
+                timezone: 'UTC',
+            });
+        });
+
     const app: Application = express();
-    await AppDataSource.initialize();
+    
     app.use(cors());
 
     app.use(express.json());

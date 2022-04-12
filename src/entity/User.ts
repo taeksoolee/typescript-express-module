@@ -34,14 +34,14 @@ export class User {
 
     @CreateDateColumn({
         name: 'CREATED_DATE',
-        type: 'timestamp',
+        type: 'timestamp with time zone', // pg curr tomestamp
     })
-    createdDate: String;
+    createdDate: Date;
 
     @UpdateDateColumn({
         name: 'UPDATED_DATE',
-        type: 'timestamp',
+        type: 'timestamp with time zone', // pg curr tomestamp
     })
-    updatedDate: String;
+    updatedDate: Date;
 
 }
