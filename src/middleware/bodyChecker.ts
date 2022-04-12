@@ -66,7 +66,7 @@ export default function bodyChecker(arg: bodyCheckerArg){
 
 
       if(err) {
-          res.status(403).json(err);
+          res.status(400).json(err);
           return;
       };
 

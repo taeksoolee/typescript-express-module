@@ -9,7 +9,7 @@ export const AppDataSource = new DataSource({
     username: "test",
     password: "test",
     database: "test",
-    synchronize: true,
+    synchronize: false, // 배포시 false로 변경 필요
     logging: true,
     entities: [
         User,
