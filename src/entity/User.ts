@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, BaseEntity } from "typeorm"
 import { UserRoleType, userRoleTypes } from "../interface"
 
 @Entity()
@@ -43,5 +43,4 @@ export class User {
         type: 'timestamp with time zone', // pg curr tomestamp
     })
     updatedDate: Date;
-
 }
