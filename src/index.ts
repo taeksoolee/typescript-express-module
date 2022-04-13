@@ -4,14 +4,10 @@ import { Application } from 'express';
 
 import { AppDataSource } from "./data-source"
 
-
 import * as cors from 'cors';
 import userRouter from './routes/user';
 
-
-
 async function bootstrap(port) {
-    
     await AppDataSource
         .initialize()
         .then((d) => {
