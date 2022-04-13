@@ -1,7 +1,11 @@
-# Awesome Project Build with TypeORM
+# typescript express module!
 
-Steps to run this project:
+``` shell
+npm start
+```
 
-1. Run `npm i` command
-2. Setup database settings inside `data-source.ts` file
-3. Run `npm start` command
+- typescript
+- express
+- typeorm
+- body check custom middleware
+- jwt
