@@ -1,4 +1,5 @@
 import * as jsonwebtoken from 'jsonwebtoken';
+import { Observable, Subject, Subscriber } from 'rxjs';
 import { UserRoleType } from '../interface';
 
 export interface Payload {
@@ -76,39 +77,13 @@ export default class Jwt<T extends Payload> {
   }
 }
 
-// const secret: string = 'abcdefghi';
+const jwt$ = new Subject();
 
-// interface JwtPayload extends Payload {
-//   id: string;
-//   role: UserRoleType;
-// }
+export function initJwt<T extends Payload>(secret: string, prefix?: string): void {
+  const jwt = new Jwt<T>(secret, prefix);
+  jwt$.next(jwt);
+}
 
-// const jwt = new Jwt<JwtPayload>(secret);
-
-// const at = jwt.sign({
-//   id: 'abc',
-//   role: 'normal'
-// });
-
-// console.log('at ::: ', at);
-// console.log('===');
-// const authentication = jwt.addPrefix(at);
-// console.log(authentication);
-// console.log('===')
-// console.log(jwt.removePrefix(at));
-// console.log('===');
-// console.log(jwt.getPayoad(at));
-
-// const rt = jwt.signRefreshToken(at);
-
-// console.log('rt ::: ', rt,);
-// console.log('===');
-// console.log(jwt.getAccessToken(rt));
-
-// console.log('===');
-// console.log(jwt.verify(at, {
-//   id: 'abc',
-//   role: 'normal',
-// }));
-// console.log('===');
-// console.log(jwt.verifyRefreshToken(at, rt));
+export function getJwt() {
+  return jwt$;
+}

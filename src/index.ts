@@ -7,7 +7,8 @@ import { AppDataSource } from "./data-source"
 import * as cors from 'cors';
 import userRouter from './routes/user';
 import authRouter from './routes/auth';
-import Jwt from './utils/jwt';
+import { initJwt } from './utils/jwt';
+import { JwtPayload } from 'jsonwebtoken';
 
 async function bootstrap(port) {
     await AppDataSource
@@ -18,6 +19,8 @@ async function bootstrap(port) {
             });
         });
 
+    const secret: string = 'abcde';
+    initJwt<JwtPayload>(secret);
 
     const app: Application = express();
     
