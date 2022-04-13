@@ -5,9 +5,8 @@ import bodyChecker from '../middleware/bodyChecker';
 
 import { User } from "../entity/User"
 import { DataSource, Like } from 'typeorm';
-import { constants } from 'fs';
 
-export default function userRouter(AppDataSource: DataSource) {
+export default function userRouter(AppDataSource: DataSource): Router {
   const r = Router();
 
   r.get('/',

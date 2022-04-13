@@ -6,6 +6,8 @@ import { AppDataSource } from "./data-source"
 
 import * as cors from 'cors';
 import userRouter from './routes/user';
+import authRouter from './routes/auth';
+import Jwt from './utils/jwt';
 
 async function bootstrap(port) {
     await AppDataSource
@@ -16,6 +18,7 @@ async function bootstrap(port) {
             });
         });
 
+
     const app: Application = express();
     
     app.use(cors());
@@ -23,6 +26,7 @@ async function bootstrap(port) {
     app.use(express.json());
     app.use(express.urlencoded({extended: true}));
 
+    app.use('/auth', authRouter(AppDataSource));
     app.use('/user', userRouter(AppDataSource));
 
     app.listen(port, () => {
